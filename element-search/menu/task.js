@@ -11,7 +11,7 @@ for (let item of link) {
 	// console.log(item.nextElementSibling)
 	
 	if (item.nextElementSibling != null) {
-		let arr = [];
+		// let arr = [];
 		arr.push(item.nextElementSibling);
 		console.log(arr)
 	}
