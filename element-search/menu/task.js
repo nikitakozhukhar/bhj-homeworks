@@ -1,48 +1,60 @@
-/*const menuLink = document.querySelectorAll('.menu__link');
-function clickMenu() {
-	const menuSub = document.querySelector('.menu_sub');
-};
-for (let menu of menuLink) {
-	menu.addEventListener('click', clickMenu)
-}
-// console.log(menuLink)
-
-
-const link = document.querySelector('.menu__item');
-const parentA = link.closest('.menu');
-console.log(parentA)*/
-
-const menuLink = document.getElementsByClassName('menu__link');
-for (let menu_link of menuLink) {
-	let menu = menu_link.closest('.menu');
-	if (menu.classList.contains('menu_sub')) {
-		menu.classList.add('menu_active')
-	}
-
-	menu_link.addEventListener('click', function() {
-		
-	})
-}
-
+const link = document.querySelectorAll('.menu__link');
 const menu = document.getElementsByClassName('menu');
-// console.log(menu);
-// const item = document.querySelector('.menu__item');
 const item = document.getElementsByClassName('menu__item');
+const sub = document.querySelector('.menu')
+
+for (let elem of link) {
+	if (elem.nextElementSibling) {
+		elem.classList.add('menu_active')
+		// console.log(elem.nextElementSibling)
+	}
+	
+}
+
+// console.log(link)
+
+for (let item of link) {
+	// console.log(item)
+	item.addEventListener('click', () => {
+		
+		// sub.classList.add('.menu_active')
+	})
+		// if (item.querySelector('.menu')) {
+		// 	for (let itemMenu of menu) {
+		// 		itemMenu.classList.add('.menu_active')
+		// 	}
+		// }
+		// return false
+	
+}
+
+/*menuLink.forEach(elem => {
+	elem.addEventListener('click', function() {
+		// if (elem.contains('.menu')) {
+			console.log('Menu was found')
+		// 	elem.classList.add('menu_active');
+		// }
+	})
+})*/
+
+
 for (let menu__item of item) {
 	let menu_sub = menu__item.closest('.menu_sub');
 	function addMenuActive() {
 		menu_sub.classList.add('menu_active')
 	}
-
-	// console.log(menu__item)
-	// console.log(menu__item.closest('.menu'))
 }
-// const itemClosest = item.closest('.menu_sub')
-// console.log(item);
 
 
+/*const link = document.getElementsByClassName(‘menu__link’);
+const menu = document.getElementsByClassName(‘menu’);
+const item = document.getElementsByClassName(‘menu__item’);
 
-// const parent = item.closest('.menu')
-// if (parent) {
-	
-// }
+for (let index = 0; index <= link.length - 1; index++) {
+link[index].onclick = () => {
+if (item[index].querySelector(’.menu’)) {
+menu[index].classList.add(‘menu_active’);
+return false;
+}
+}
+}*/
