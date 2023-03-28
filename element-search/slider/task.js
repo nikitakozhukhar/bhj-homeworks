@@ -31,19 +31,63 @@ const sliderItems = document.querySelectorAll('.slider__item');
 
 sliderArrow.forEach(elem => elem.addEventListener('click', event => {
 
-const prev = document.querySelector('.slider__arrow_prev');
-const sliderItems = [...document.querySelectorAll('.slider__item')];
-const activeSliderIndex = sliderItems.indexOf(document.querySelector('.slider__item_active'));
-  if (event.target == prev) {
-    isTheFirstSlide(activeSliderIndex)
-      ? switchToTheLastSlide(activeSliderIndex)
-      : switchToThePrevSlide(activeSliderIndex)
-  } else {
-    isTheLastSlide(activeSliderIndex)
-      ? switchToTheFirstSlide(activeSliderIndex)
-      : switchToTheNextSlide(activeSliderIndex)
-  }
+  const prev = document.querySelector('.slider__arrow_prev');
+  const sliderItems = [...document.querySelectorAll('.slider__item')];
+
+  const activeSliderIndex = sliderItems.indexOf(document.querySelector('.slider__item_active'));
+    if (event.target == prev) {
+     isTheFirstSlide(activeSliderIndex)
+        ? switchToTheLastSlide(activeSliderIndex)
+        : switchToThePrevSlide(activeSliderIndex)
+    } else {
+     isTheLastSlide(activeSliderIndex)
+        ? switchToTheFirstSlide(activeSliderIndex)
+       : switchToTheNextSlide(activeSliderIndex)
+   }
 }));
+
+
+/*Задание со звездочкой в процессе выполнения*/
+
+function switchToTheLastSlideDot(index) {
+  slidersDot[slidersDot.length - 1].classList.add('slider__dot_active');
+  slidersDot[index].classList.remove('slider__dot_active');
+ }
+
+ function switchToThePrevSlideDot(index) {
+  slidersDot[index].classList.remove('slider__dot_active');
+  slidersDot[index - 1].classList.add('slider__dot_active');
+ }
+
+ function switchToTheFirstSlideDot(index) {
+  slidersDot[0].classList.add('slider__dot_active');
+  slidersDot[index].classList.remove('slider__dot_active');
+ }
+
+ function switchToTheNextSlideDot(index) {
+  slidersDot[index].classList.remove('slider__dot_active');
+  slidersDot[index + 1].classList.add('slider__dot_active');
+ }
+
+function isTheFirstSlideDot(index) {
+  return index == 0
+}
+
+function isTheLastSlideDot(index) {
+  return index == slidersDot.length - 1
+}
+
+const slidersDot = document.querySelectorAll('.slider__dot');
+slidersDot.forEach(sliderDot => {
+  sliderDot.addEventListener('click', event => {
+    
+    const slidersDot = [...document.querySelectorAll('.slider__dot')];
+    const activeSliderDot = slidersDot.indexOf(document.querySelector('.slider__dot_active'));
+
+  })
+})
+
+
 
 
 
