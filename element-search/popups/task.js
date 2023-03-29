@@ -1,19 +1,23 @@
 const modalMain = document.getElementById('modal_main');
-modalMain.style.display = 'block';
+modalMain.classList.add('modal_active');
 
 const showSuccess = document.querySelector('.show-success');
 
-showSuccess.addEventListener('click', function() {
-	modalSuccess.style.display = 'block';
-})
 const modalSuccess = document.getElementById('modal_success');
+
+showSuccess.addEventListener('click', function() {
+	modalMain.classList.remove('modal_active');
+	modalSuccess.classList.add('modal_active');
+})
 
 const modalClose = document.querySelectorAll('.modal__close');
 
 modalClose.forEach(elem => {
 	elem.addEventListener('click', function() {
-		modalMain.style.display = 'none';
-		modalSuccess.style.display = 'none'
+		if (elem.classList.contains('modal__close' && 'modal__close_times')) {
+			modalMain.classList.remove('modal_active')
+			modalSuccess.classList.remove('modal_active');
+		}
 	})
 })
 
