@@ -1,6 +1,6 @@
 const links = document.querySelectorAll('.menu_main > .menu__item > .menu__link');
-let activeNow = document.querySelectorAll('.menu_sub');
-// console.log(activeNow)
+let activeNow = document.getElementsByClassName('menu_sub');
+
 /*function isActiveNow() {
 	let activeNow = document.querySelector('.menu_main > .menu__item > menu_active')
 	if (activeNow) {
@@ -26,7 +26,6 @@ let subMenu = topLevelLink.nextElementSibling;
 				activeMenu.classList.remove('menu_active')
 			}
 			
-			
 			// console.log(subMenu.classList.contains('.menu_active'))
 			// if (subMenu.classList.contains('menu_active')) {
 			// 	console.log('click on active menu')
@@ -40,7 +39,12 @@ let subMenu = topLevelLink.nextElementSibling;
 				}
 				console.log(nowActive.classList.value)
 			}*/
-		subMenu.classList.toggle('menu_active');
+			subMenu.classList.toggle('menu_active');
+		if (activeNow) {
+			console.log('click on active')
+			// activeNow.classList.remove('menu_active')
+		}
+		
 		/*for (let nowActive of activeNow) {
 			if (nowActive.classList.contains('menu_active')) {
 				nowActive.classList.remove('menu_active')
