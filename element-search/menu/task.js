@@ -1,39 +1,26 @@
-const links = document.querySelectorAll('.menu_main > .menu__item > .menu__link');
-let activeNow = document.getElementsByTagName('ul');
+const menuLinks = [...document.querySelectorAll('.menu__link')]
 
-
-
-for (let topLevelLink of links) {
+const onClick = event => {
 	
-let subMenu = topLevelLink.nextElementSibling;
-	if (subMenu) {
-		topLevelLink.addEventListener('click', event => {
-		event.preventDefault();
-		
-		let activeMenu = document.querySelector('.menu_active');
-		console.log(event.target.nextElementSibling)
-		
-		if(activeMenu) {
-			// console.log(activeMenu)
-			activeMenu.classList.toggle('menu_active')
-		}
-		
-		if (subMenu.classList.contains('menu_active')) {
-			
-			subMenu.classList.remove('menu_active');
-		}
-		// if (event.target.nextElementSibling.classList.contains('menu_active')) {
-		// 	event.target.nextElementSibling.classList.remove('menu_active')
-		// }
-
-
-		subMenu.classList.toggle('menu_active');
 	
-		// if (event.target.closest('.menu')) {
-			// console.log(event.target.closest('.menu'))
-			// subMenu.classList.remove('menu_active')
-		// }
-			
-		})
+	const link = event.target;
+	const item = link.closest('.menu__item');
+	
+	const subMenu = item.querySelector('.menu_sub');
+	if (!subMenu) {
+		return
 	}
+	subMenu.classList.toggle('menu_active');
+	const mainMenu = item.closest('.menu_main');
+  const restMenus = [...mainMenu.querySelectorAll('.menu')]
+    .filter(m => m !== subMenu)
+    .forEach(m => m.classList.remove('menu_active'));
+	
+		event.preventDefault();
 }
+
+menuLinks.forEach(link => link.addEventListener('click', onClick));
+	
+
+
+

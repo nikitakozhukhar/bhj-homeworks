@@ -1,4 +1,4 @@
-//Массив элементов менюшек навигации
+/*//Массив элементов менюшек навигации
 const tabNavigation = [...document.querySelectorAll('.tab')];
 //Получаем индекс активной менюшки навигации
 let indexOfActiveTab = 
@@ -31,8 +31,34 @@ tabNavigation.forEach(tab => {
 			// tab.classList.remove('tab_active');
 	})
 })
-// console.log(indexOfActiveTab)
+// console.log(indexOfActiveTab)*/
+const tabNavigation = [...document.querySelectorAll('.tab__navigation')];
+const tabContent = [...document.querySelectorAll('.tab__content')];
 
+const onClick = e => {
+	const tab = e.target;
+
+	const link = tab.closest('.tab__navigation');
+	tab.classList.toggle('tab_active');
+	const restTab = [...link.querySelectorAll('.tab')]
+    .filter(t => t !== tab)
+    .forEach(t => t.classList.remove('tab_active'));
+	
+	
+
+
+for (let i = 0; i < tabNavigation.length; i++) {
+	for (let j = 0; j < tabContent.length; j++) {
+		if (tabNavigation[i].classList.contains('tab_active')) {
+			tabContent[j].classList.toggle('tab__content_active')
+		}
+	}
+}
+	console.log(restTab)
+}
+
+
+tabNavigation.forEach(tab => tab.addEventListener('click', onClick));
 
 
 
