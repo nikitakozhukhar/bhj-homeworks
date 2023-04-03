@@ -27,18 +27,14 @@ class Game {
      */
     
       document.addEventListener('keydown', event => {
-        // console.log(this.currentSymbol.textContent)
+        if (event.key !== this.currentSymbol.textContent) {
+          this.fail();
+        }
+      
         if (event.key == this.currentSymbol.textContent) {
           this.success();
         }
-        // if (event.key !== this.currentSymbol.textContent) {
-        //   this.fail();
-        // }
-      
     })
-    
-
-   
   }
 
   success() {
