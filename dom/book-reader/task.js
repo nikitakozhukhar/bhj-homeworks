@@ -16,7 +16,7 @@ function onClick(event) {
 
 	if (bigFontSize) {
 		book.classList.remove('book_fs-small')
-		book.classList.toggle('book_fs-big')
+		book.classList.add('book_fs-big')
 	} 
 	 if (!bigFontSize && !smallFontSize) {
 		 book.classList.remove('book_fs-small');

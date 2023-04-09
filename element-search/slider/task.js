@@ -100,21 +100,22 @@ const prev = document.querySelector('.slider__arrow_prev');
 const dot = document.querySelector('.slider__dot');
 const sliderItems = [...document.querySelectorAll('.slider__item')];
 const sliderDots = [...document.querySelectorAll('.slider__dot')];
-let activeIndex = sliderItems.findIndex(item => item.classList.contains('slider__item_active'))
+let activeIndex = sliderItems.findIndex(item => item.classList.contains('slider__item_active'));
+let activeSlide = activeIndex;
+
 /*----- */
-function changeSlide(index) {
-  // const sliderItems = [...document.querySelectorAll('.slider__item')];
-  let activeIndex = sliderItems.findIndex(item => item.classList.contains('slider__item_active'));
-  // sliderItems.forEach(item => item.classList.remove('slider__item_active'));
-  // sliderDots.forEach(item => item.classList.remove('slider__dot_active'));
-  sliderItems[index].classList.remove('slider__item_active');
-  sliderDots[index].classList.remove('slider__dot_active');
-  switchToTheNextSlide(index);
-  switchToTheLastSlide(index);
-  switchToThePrevSlide(index);
-  switchToTheFirstSlide(index);
-  isTheFirstSlide(index);
-  isTheLastSlide(index)
+function changeSlide(activeSlide) {
+  // let activeIndex = sliderItems.findIndex(item => item.classList.contains('slider__item_active'));
+
+  sliderItems[activeIndex].classList.remove('slider__item_active');
+  if (event.target == prev) {
+    sliderItems[activeIndex - 1].classList.toggle('slider__item_active');
+    activeIndex = activeIndex + 1;
+  } else {
+    sliderItems[activeIndex + 1].classList.toggle('slider__item_active');
+  }
+  sliderDots[activeIndex].classList.remove('slider__dot_active');
+  
   
   // if (index >= 0 && index < sliderItems.length && index < sliderDots.length) {
   //   sliderItems[index].classList.add('slider__item_active');
@@ -136,12 +137,12 @@ function changeSlide(index) {
   
   return
 }
-// console.log(`index out of func ${activeIndex}`)
+console.log(`index out of func ${activeIndex}`)
 
 
 // sliderArrows.forEach(arrow => arrow.addEventListener('click', changeSlide(activeIndex)))
 
-sliderArrows.forEach(dot => dot.addEventListener('click', event => {
+sliderArrows.forEach(arrow => arrow.addEventListener('click', event => {
   changeSlide(activeIndex);
   console.log(activeIndex)
 }))

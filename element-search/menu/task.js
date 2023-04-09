@@ -11,7 +11,7 @@ const onClick = event => {
 	}
 	subMenu.classList.toggle('menu_active');
 	const mainMenu = item.closest('.menu_main');
-  	const restMenus = [...mainMenu.querySelectorAll('.menu')]
+  	[...mainMenu.querySelectorAll('.menu')]
     .filter(m => m !== subMenu)
     .forEach(m => m.classList.remove('menu_active'));
 	
