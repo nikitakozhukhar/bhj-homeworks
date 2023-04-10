@@ -16,4 +16,9 @@ reveal.classList.add('reveal_active')
 return
 }
 
-setInterval(() => console.log(isVisible(revealActive)), 1000)
+
+// console.log(isVisible(revealActive))
+window.addEventListener('scroll', console.log('scroll on attack'))
+// setInterval(() => {
+// isVisible(revealActive), 1000
+// })
