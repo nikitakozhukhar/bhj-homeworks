@@ -6,6 +6,7 @@ function switchToTheLastSlide(index) {
 function switchToThePrevSlide(index) {
  sliderItems[index].classList.remove('slider__item_active');
  sliderItems[index - 1].classList.add('slider__item_active');
+ index = index - 1;
 }
 
 function switchToTheFirstSlide(index) {
@@ -26,7 +27,7 @@ function isTheLastSlide(index) {
  return index == sliderItems.length - 1
 }
 
-/*const sliderArrow = document.querySelectorAll('.slider__arrow');
+const sliderArrow = document.querySelectorAll('.slider__arrow');
 const sliderItems = document.querySelectorAll('.slider__item');
 
 sliderArrow.forEach(elem => elem.addEventListener('click', event => {
@@ -44,7 +45,7 @@ sliderArrow.forEach(elem => elem.addEventListener('click', event => {
        ? switchToTheFirstSlide(activeSliderIndex)
       : switchToTheNextSlide(activeSliderIndex)
   }
-}));*/
+}));
 
 /*---------------------------------------------------------------*/
 /*В третьем задании, если хотите реализовать дополнительное задание, то управление слайдером стоит вынести в отдельную функцию. То есть, реализуйте отдельную функцию, которая будет управлять слайдером. Принимает число (позицию слайда, который необходимо активировать), а далее попробуйте следующий алгоритм:
@@ -95,62 +96,74 @@ function isTheLastSlide(index) {
   return ((index == sliderItems.length - 1) || (index == sliderDots.length - 1))
 }*/
 
-const sliderArrows = document.querySelectorAll('.slider__arrow');
-const prev = document.querySelector('.slider__arrow_prev');
-const dot = document.querySelector('.slider__dot');
-const sliderItems = [...document.querySelectorAll('.slider__item')];
-const sliderDots = [...document.querySelectorAll('.slider__dot')];
-let activeIndex = sliderItems.findIndex(item => item.classList.contains('slider__item_active'));
-let activeSlide = activeIndex;
+// Доработка
+// const sliderArrows = document.querySelectorAll('.slider__arrow');
+// const prev = document.querySelector('.slider__arrow_prev');
+// const next = document.querySelector('.slider__arrow_next');
+// const dot = document.querySelector('.slider__dot');
+// const sliderItems = [...document.querySelectorAll('.slider__item')];
+// const sliderDots = [...document.querySelectorAll('.slider__dot')];
+// let activeIndex = sliderItems.findIndex(item => item.classList.contains('slider__item_active'));
+// sliderDots[activeIndex].classList.add('slider__dot_active');
+// let activeSlide = activeIndex;
 
 /*----- */
-function changeSlide(activeSlide) {
-  // let activeIndex = sliderItems.findIndex(item => item.classList.contains('slider__item_active'));
-
-  sliderItems[activeIndex].classList.remove('slider__item_active');
-  if (event.target == prev) {
-    sliderItems[activeIndex - 1].classList.toggle('slider__item_active');
-    activeIndex = activeIndex + 1;
-  } else {
-    sliderItems[activeIndex + 1].classList.toggle('slider__item_active');
-  }
-  sliderDots[activeIndex].classList.remove('slider__dot_active');
+// function changeSlide(event) {
+  // 1
+//   let activeIndex = sliderItems.findIndex(item => item.classList.contains('slider__item_active'));
   
-  
-  // if (index >= 0 && index < sliderItems.length && index < sliderDots.length) {
-  //   sliderItems[index].classList.add('slider__item_active');
-  //   sliderDots[index].classList.add('slider__dot_active');
-  // }
-  // if (index < 0) {
-  //   sliderItems[sliderItems.length - 1].classList.toggle('slider__item_active');
-  //   sliderDots[sliderDots.length - 1].classList.toggle('slider__dot_active');
-  // }
-  // if ((index > sliderItems.length - 1) || (index > sliderDots.length - 1)) {
-  //   sliderItems[sliderItems.length - 1].classList.remove('slider__item_active');
-  //   sliderItems[0].classList.toggle('slider__item_active');
+//   if (activeIndex == 0 && event.target !== next) {
+//     sliderItems[activeIndex].classList.remove('slider__item_active');
+//     sliderDots[activeIndex].classList.remove('slider__dot_active');
 
-  //   sliderDots[sliderDots.length - 1].classList.remove('slider__dot_active');
-  //   sliderDots[0].classList.toggle('slider__dot_active');
-  // } 
-  // activeIndex = sliderItems.findIndex(item => item.classList.contains('slider__item_active'));
+//     sliderItems[sliderItems.length - 1].classList.add('slider__item_active');
+//     sliderDots[sliderDots.length - 1].classList.add('slider__dot_active');
+//     return
+//   }
 
-  
-  return
-}
-console.log(`index out of func ${activeIndex}`)
+//   if (event.target == prev) {
+//     sliderItems[activeIndex].classList.remove('slider__item_active');
+//     sliderItems[activeIndex - 1 ].classList.add('slider__item_active');
+
+//     sliderDots[activeIndex].classList.remove('slider__dot_active');
+//     sliderDots[activeIndex - 1 ].classList.add('slider__dot_active');
+//   }
+
+//   if (event.target == next) {
+//     sliderItems[activeIndex].classList.remove('slider__item_active');
+//     sliderItems[activeIndex + 1].classList.add('slider__item_active');
+
+//     sliderDots[activeIndex].classList.remove('slider__dot_active');
+//     sliderDots[activeIndex + 1 ].classList.add('slider__dot_active');
+//     activeIndex = activeIndex + 1;
+//   }
+
+//   if (event.target == next && activeIndex == sliderItems.length - 1) {
+//     sliderItems[0].classList.add('slider__item_active');
+//     sliderDots[0].classList.add('slider__dot_active');
+//   }
+   
+//     console.log(`index in the func ${activeIndex}`)
+   
+//   return
+// }
+// console.log(`index out of func ${activeIndex}`)
 
 
 // sliderArrows.forEach(arrow => arrow.addEventListener('click', changeSlide(activeIndex)))
+// Добатобка сверху
 
-sliderArrows.forEach(arrow => arrow.addEventListener('click', event => {
-  changeSlide(activeIndex);
-  console.log(activeIndex)
-}))
 
-sliderDots.forEach(dot => dot.addEventListener('click', event => {
-  changeSlide(activeIndex);
-  console.log(activeIndex)
-}))
+// sliderArrows.forEach(arrow => arrow.addEventListener('click', event => {
+//   changeSlide(event);
+//   console.log()
+// }))
+
+// sliderDots.forEach(dot => dot.addEventListener('click', event => {
+//   const dot = [...document.querySelectorAll('.slider__dot')];
+//   let index = dot.findIndex(item => item.classList.contains('slider__dot_active'))
+//   console.log(event.target[index])
+// }))
 
 // changeSlide(activeIndex);
 
