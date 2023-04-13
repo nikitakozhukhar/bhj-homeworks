@@ -81,23 +81,10 @@ class Autocomplete {
         value: 'Содержимое атрибута value'
       }
     */
+     
       const options = [...this.input.options];
-      if(options)
-      this.valueContainer.addEventListener('focus', () => {
-        if (text == options) {
-          console.log('yes')
-        }
-        })
-      
-      // options.includes(text)
-      
-      // console.log(this.input.options.innerHTML)
-      // options.forEach(item => {
-      //   if (item.textContent.includes(text)) {
-          
-      //   }
-      // })
-      
+      const option = options.map(item => item.text).includes(text);
+      console.log(option)    
       
     return [
       {
