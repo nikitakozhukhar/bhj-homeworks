@@ -1,17 +1,20 @@
-const interestCheck = document.querySelector('.interest__check');
+const interestCheck = document.querySelector('.interest');
 
-const checkbox = [...document.getElementsByTagName('input')];
+const childrenInterest = document.querySelectorAll('.interests>.interest');
+
+console.log(childrenInterest)
 
 
-for (check of checkbox) {
-	check.addEventListener('change', event => {
-		console.log(event.target.checked);
-		if (check.checked) {
-			check.closest('label').checked;
-		}
-		
-	})
-}
+childrenInterest.forEach(item => item.addEventListener('change', event => {
+	// console.log(event.currentTarget);
+	if (event.target.classList.contains('interest__check')) {
+		console.log(item.closest('interest'))
+		// item.closest('interest').checked = true
+		// childrenInterest.checked = true;
+			
+	}	
+}))
+
 // checkbox.forEach(element => {
 // 	element.addEventListener('change', event => {
 // 		console.log(event.target.checked);
