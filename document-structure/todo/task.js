@@ -3,6 +3,7 @@ const taskInput = document.getElementById('task__input');
 const taskRemove = document.querySelector('.task__remove');
 
 taskInput.addEventListener('keydown', e => {
+	
 const taskList = document.querySelector('.tasks__list');
 const text = taskInput.value;
 if (e.key == 'Enter') {
@@ -18,10 +19,10 @@ if (e.key == 'Enter') {
 
 })
 
-taskRemove.addEventListener('click', () => {
-	const taskList = document.querySelector('.tasks__list');
-	taskList.innerHTML = ``
-})
+// taskRemove.addEventListener('click', () => {
+// 	const taskList = document.querySelector('.tasks__list');
+// 	taskList.innerHTML = ``
+// })
 
 
 

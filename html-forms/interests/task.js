@@ -1,27 +1,22 @@
-const interestCheck = document.querySelector('.interest');
+const interestCheck = document.querySelectorAll('.interest__check')
+
+const interest = document.querySelectorAll('.interest');
 
 const childrenInterest = document.querySelectorAll('.interests>.interest');
 
-console.log(childrenInterest)
+const childs = document.querySelectorAll('.interests .interests_active')
 
 
-childrenInterest.forEach(item => item.addEventListener('change', event => {
-	// console.log(event.currentTarget);
-	if (event.target.classList.contains('interest__check')) {
-		console.log(item.closest('interest'))
-		// item.closest('interest').checked = true
-		// childrenInterest.checked = true;
-			
+interestCheck.forEach(item => item.addEventListener('change', event => {
+	
+	if (event.currentTarget.checked == true && event.currentTarget.closest('.interest')) {
+		
+		childrenInterest.forEach(child => child.attr('checked', true))
 	}	
+
+	if (event.currentTarget.checked == true) {
+
+	}
 }))
 
-// checkbox.forEach(element => {
-// 	element.addEventListener('change', event => {
-// 		console.log(event.target.checked);
-// 		if (element.checked) {
-// 			element.closest('label').checked;
-// 		}
-		
-// 	})
-// });
 

@@ -81,17 +81,20 @@ class Autocomplete {
         value: 'Содержимое атрибута value'
       }
     */
-     
-      const options = [...this.input.options];
-      const option = options.map(item => item.text).includes(text);
-      console.log(option)    
       
-    return [
-      {
-        text: text,
-        value: '1'
-      }
-    ];
+      const options = [...this.input.options];
+      const filtered = options.filter(option => option.textContent.includes(text));
+
+      return filtered.map(option => 
+        ( 
+          { 
+            text: option.textContent, 
+            value: option.value
+          } 
+        ) 
+      )
+
+    
   }
 }
 
