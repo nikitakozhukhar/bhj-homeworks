@@ -3,6 +3,7 @@
 }
 
 .has-tooltip {
+  position: relative;
   color: #000;
   background: yellow;
 }

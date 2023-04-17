@@ -11,11 +11,9 @@ interestCheck.forEach(item => item.addEventListener('change', event => {
 	
 	if (event.currentTarget.checked == true && event.currentTarget.closest('.interest')) {
 		
-		childrenInterest.forEach(child => child.attr('checked', true))
-	}	
-
-	if (event.currentTarget.checked == true) {
-
+		childrenInterest.forEach(child => {
+			child.checked = true
+		})
 	}
 }))
 

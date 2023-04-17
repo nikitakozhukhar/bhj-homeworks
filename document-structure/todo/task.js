@@ -1,12 +1,14 @@
 const addBtn = document.getElementById('tasks__add');
 const taskInput = document.getElementById('task__input');
 const taskRemove = document.querySelector('.task__remove');
+const taskList = document.querySelector('.tasks__list');
 
 taskInput.addEventListener('keydown', e => {
-	
-const taskList = document.querySelector('.tasks__list');
-const text = taskInput.value;
-if (e.key == 'Enter') {
+
+const text = document.getElementById('task__input').value;
+
+if (e.key == 'Enter' && text) {
+
 	taskList.innerHTML = `
 	<div class="task">
 		<div class="task__title">
@@ -15,9 +17,17 @@ if (e.key == 'Enter') {
 		<a href="#" class="task__remove">&times;</a>
 	</div>
 	`
-	}
-
+}
 })
+
+document.onclick = e => {
+	if (e.target.classList.contains('task__remove')) {
+		taskList.remove();
+	}
+}
+
+
+	
 
 // taskRemove.addEventListener('click', () => {
 // 	const taskList = document.querySelector('.tasks__list');

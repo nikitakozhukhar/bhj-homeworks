@@ -8,9 +8,6 @@ const input = document.getElementById('chat-widget__input');
 
 const messagesContainer = document.querySelector('.chat-widget__messages');
 
-
-
-
 input.addEventListener('keydown', e => {
   const botAnswerContainer = [
     'Ну привет',
@@ -24,7 +21,7 @@ input.addEventListener('keydown', e => {
   let botText = botAnswerContainer[Math.floor(Math.random() * botAnswerContainerSize)];
 
   if (e.key == 'Enter') {
-    let inputText = document.getElementById('chat-widget__input').value
+    let inputText = document.getElementById('chat-widget__input').value;
     messagesContainer.innerHTML += `
       <div class="message message_client">
         <div class="message__time">${currentDate}</div>
@@ -33,6 +30,8 @@ input.addEventListener('keydown', e => {
         </div>
       </div>
       `;
+
+    inputText = ''; // По задумке должно очищать поле input после отправки сообщения пользователя в чат, однако так не происходит
 
       messagesContainer.innerHTML += `
       <div class="message message_bot">
@@ -43,7 +42,6 @@ input.addEventListener('keydown', e => {
       </div>
       `;
   }
-
 })
 
   let currentDate = new Date().toLocaleTimeString().slice(0,-3);
