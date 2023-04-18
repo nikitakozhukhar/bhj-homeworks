@@ -1,29 +1,76 @@
 const quantityControl = document.querySelectorAll(".product__quantity-control");
 
-const quantityValue = document.querySelectorAll(".product__quantity-value");
+const quantityValue = document.querySelector(".product__quantity-value");
 
-const product = document.querySelector('.product>.product__quantity-value');
+const productValue = document.querySelector('.product__quantity-value');
 
-let cart = {
-  'data-id 1': 1,
-  'data-id 2': 1,
-  'data-id 3': 1,
-  'data-id 4': 1
-}
 
+const product = document.querySelectorAll('.product')
 
 document.onclick = e => {
-  let parent = e.target.closest('.product');
+  // const parent = e.target.closest('.product');
+  const image = document.querySelector('img').src;
+
+  // let cartProducts = document.querySelector('.cart__products');
+  
   if (e.target.classList.contains('product__quantity-control_dec')) {
-    console.log(parent.dataset.id)
-    // decreaseValue(e.target.dataset.id);
+    decreaseValue(e);
   }
 
   if (e.target.classList.contains('product__quantity-control_inc')) {
-    console.log(parent.dataset.id)
-    // increaseValue(e.target.dataset.id);
+    increaseValue(e);
+    console.log(image)
+  }
+
+    if (e.target.classList.contains('product__add')) {
+      //создаем элемент карточки товара для корзины
+      createCartProduct(e);
+      const cartProduct = document.createElement('div');
+      
+		  /*cartProduct.className = 'cart__product';
+      cartProduct.setAttribute('data-id', parent.dataset.id);
+      cartProducts.appendChild(cartProduct);*/
+
+      //Создаем тег для картинки товара
+      const cartProductImage = document.createElement('img');
+      cartProductImage.src = image;
+      cartProductImage.className ='cart__product-image';
+      cartProduct.appendChild(cartProductImage);
+
+      //создаем счетчик добавленного товара
+      const cartProductCount = document.createElement('div');
+      cartProductCount.className ='cart__product-count';
+      cartProduct.appendChild(cartProductCount);
+      
+  }
+  
+  
+
+}
+
+const decreaseValue = e => {
+  e.target.nextElementSibling.textContent--;
+  if (e.target.nextElementSibling.textContent <= 1) {
+    e.target.nextElementSibling.textContent = 1;
   }
 }
+
+const increaseValue = e => {
+  e.target.previousElementSibling.textContent++;
+}
+
+const createCartProduct = e => {
+  const parent = e.target.closest('.product');
+  let cartProducts = document.querySelector('.cart__products');
+  const cartProduct = document.createElement('div');
+      
+		  cartProduct.className = 'cart__product';
+      cartProduct.setAttribute('data-id', parent.dataset.id);
+      cartProducts.appendChild(cartProduct);
+}
+
+
+
 
 // const decreaseValue = id => {
   
@@ -34,13 +81,14 @@ document.onclick = e => {
 // const increaseValue = id => {
  
 //   cart[id]++;
+  
 //   renderCart()
 // }
 
-const renderCart = () => {
-  console.log(cart)
-}
-renderCart()
+// const renderCart = () => {
+//   console.log(cart)
+// }
+// renderCart()
 /*
 if (e.target.classList.contains('product__quantity-control_dec')) {
   quantityValue.forEach(value => {
