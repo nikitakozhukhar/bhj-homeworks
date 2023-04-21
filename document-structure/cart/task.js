@@ -2,16 +2,21 @@ const quantityControl = document.querySelectorAll(".product__quantity-control");
 
 const quantityValue = document.querySelector(".product__quantity-value");
 
-const productValue = document.querySelector('.product__quantity-value');
+// const productValue = document.querySelector('.product__quantity-value');
 
 
 const product = document.querySelectorAll('.product')
 
 document.onclick = e => {
-  // const parent = e.target.closest('.product');
-  const image = document.querySelector('img').src;
+  const parent = e.target.closest('.product');
 
-  // let cartProducts = document.querySelector('.cart__products');
+  const imgSrc = e.target.closest('.product__controls').previousElementSibling.src;
+  
+  const productValue = e.target.closest('.product__quantity-value')
+  console.log(productValue)
+  
+
+  let cartProducts = document.querySelector('.cart__products');
   
   if (e.target.classList.contains('product__quantity-control_dec')) {
     decreaseValue(e);
@@ -19,27 +24,28 @@ document.onclick = e => {
 
   if (e.target.classList.contains('product__quantity-control_inc')) {
     increaseValue(e);
-    console.log(image)
+    // console.log(image)
   }
 
     if (e.target.classList.contains('product__add')) {
       //создаем элемент карточки товара для корзины
-      createCartProduct(e);
+      // createCartProduct(e);
       const cartProduct = document.createElement('div');
       
-		  /*cartProduct.className = 'cart__product';
+		  cartProduct.className = 'cart__product';
       cartProduct.setAttribute('data-id', parent.dataset.id);
-      cartProducts.appendChild(cartProduct);*/
+      cartProducts.appendChild(cartProduct);
 
       //Создаем тег для картинки товара
       const cartProductImage = document.createElement('img');
-      cartProductImage.src = image;
+      cartProductImage.src = imgSrc;
       cartProductImage.className ='cart__product-image';
       cartProduct.appendChild(cartProductImage);
 
       //создаем счетчик добавленного товара
       const cartProductCount = document.createElement('div');
       cartProductCount.className ='cart__product-count';
+      cartProductCount.textContent = productValue;
       cartProduct.appendChild(cartProductCount);
       
   }
@@ -59,15 +65,15 @@ const increaseValue = e => {
   e.target.previousElementSibling.textContent++;
 }
 
-const createCartProduct = e => {
-  const parent = e.target.closest('.product');
-  let cartProducts = document.querySelector('.cart__products');
-  const cartProduct = document.createElement('div');
+// const createCartProduct = e => {
+//   const parent = e.target.closest('.product');
+//   let cartProducts = document.querySelector('.cart__products');
+//   const cartProduct = document.createElement('div');
       
-		  cartProduct.className = 'cart__product';
-      cartProduct.setAttribute('data-id', parent.dataset.id);
-      cartProducts.appendChild(cartProduct);
-}
+// 		  cartProduct.className = 'cart__product';
+//       cartProduct.setAttribute('data-id', parent.dataset.id);
+//       cartProducts.appendChild(cartProduct);
+// }
 
 
 

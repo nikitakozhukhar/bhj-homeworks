@@ -2,9 +2,14 @@ const revealActive = document.querySelector('.reveal');
 
 // const itemCoords = revealActive.getBoundingClientRect();
 const itemCoordsTop = revealActive.getBoundingClientRect().top;
+
 // console.log(itemCoordsTop);
-// console.log(window.innerHeight)
+// console.log(window.innerHeight);
+
+let oldScrollY = 0;
+
 function isVisible() {
+
 
 if (itemCoordsTop < window.innerHeight) {
   revealActive.classList.add('reveal_active')
