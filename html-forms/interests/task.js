@@ -4,7 +4,7 @@ const interest = document.querySelectorAll('.interest');
 
 const childrenInterest = document.querySelectorAll('.interests>.interest');
 
-const childs = document.querySelectorAll('.interests .interests_active')
+const childs = document.querySelectorAll('.interests_active .interest')
 
 
 interestCheck.forEach(item => item.addEventListener('change', event => {

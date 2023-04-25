@@ -12,7 +12,7 @@ document.onclick = e => {
 
   const imgSrc = e.target.closest('.product__controls').previousElementSibling.src;
   
-  const productValue = e.target.closest('.product__quantity-value')
+  const productValue = e.target.closest('.product__quantity-value').textContent
   console.log(productValue)
   
 

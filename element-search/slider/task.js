@@ -47,27 +47,23 @@ sliderArrow.forEach(elem => elem.addEventListener('click', event => {
   }
 }));
 
+// const sliderItemsArr = [...document.querySelectorAll('.slider__item')];
+// const sliderDots = [...document.querySelectorAll('.slider__dot')];
+// let activeIndex = sliderItemsArr.findIndex(item => item.classList.contains('slider__item_active'));
+
+// sliderDots[activeIndex].classList.add('slider__dot_active');
 
 
-const sliderItemsArr = [...document.querySelectorAll('.slider__item')];
-const sliderDots = [...document.querySelectorAll('.slider__dot')];
-let activeIndex = sliderItemsArr.findIndex(item => item.classList.contains('slider__item_active'));
-
-sliderDots[activeIndex].classList.add('slider__dot_active');
-
-
-sliderDots.forEach(dot => dot.addEventListener('click', event => {
-  let activeDot = sliderDots.findIndex(item => item.classList.contains('slider__dot_active'));
+// sliderDots.forEach(dot => dot.addEventListener('click', event => {
+  // let activeDot = sliderDots.findIndex(item => item.classList.contains('slider__dot_active'));
   
-  sliderDots.forEach(item => item.classList.remove('slider__dot_active'))
-  // sliderItemsArr[]
-  
-  event.target.classList.add('slider__dot_active');
-  console.log(activeDot)
-  
-  // sliderDots[index].classList.remove('slider__dot_active');
+  // sliderDots.forEach(item => item.classList.remove('slider__dot_active'))
 
-}))
+  
+  // event.target.classList.add('slider__dot_active');
+
+
+// }))
 
 
 /*---------------------------------------------------------------*/

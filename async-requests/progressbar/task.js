@@ -1,17 +1,16 @@
-const progress = document.getElementById('progress');
-progress.value = 0.7;
+// const progress = document.getElementById('progress');
+progress.value = 0.0;
 
 const xhr = new XMLHttpRequest();
+const url = 'https://students.netoservices.ru/nestjs-backend/upload';
 
-xhr.open('GET', 'https://students.netoservices.ru/nestjs-backend/upload', true);
+xhr.open('GET', url, true);
 
 xhr.responseType = 'json'
 
 xhr.upload.onprogress = function (event) {
-
-	console.log(this.loaded);
-	console.log(this.total);
-	// alert('Загружено на сервер ' + event.loaded + ' байт из ' + event.total);
+	progress.value = 1;
+	alert('Загружено на сервер ' + event.loaded + ' байт из ' + event.total);
 }
 
 xhr.onload = xhr.onerror = function () {
@@ -23,9 +22,3 @@ xhr.onload = xhr.onerror = function () {
 };
 
 xhr.send();
-
-// xhr.onload = event => {
-// 	console.log(xhr.response)
-// }
-
-// xhr.send();
