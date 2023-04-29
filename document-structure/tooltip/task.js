@@ -1,15 +1,17 @@
 document.onclick = e => {
 	e.preventDefault();
 
-	const tooltip = document.querySelectorAll('.tooltip');
-
 	const title = e.target.getAttribute('title');
 
-	tooltip.forEach(item => {
-		if(item.classList.contains('.tooltip_active')){
-			item.classList.remoove('.tooltip_active')
-		}
-	})
+
+	// if (e.target.previousElementSibling.classList.contains('tooltip')) {
+	// 	return
+	// }
+
+	if (e.target.classList.contains('has-tooltip')) {
+		const tooltip = [...document.querySelectorAll('.tooltip')];
+		tooltip.forEach(item => item.classList.remove('tooltip_active'));
+	}
 
 	if (e.target.classList.contains('has-tooltip')) {
 

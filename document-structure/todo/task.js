@@ -1,26 +1,29 @@
-const taskInput = document.getElementById('task__input');
+const taskAdd = document.getElementById('tasks__add');
 const taskList = document.querySelector('.tasks__list');
 
-taskInput.addEventListener('keydown', e => {
+taskAdd.addEventListener('click', e => {
+e.preventDefault();
 
-const text = document.getElementById('task__input').value;
+const taskInput = document.getElementById('task__input');
+const text = taskInput.value;
 
-if (e.key == 'Enter' && text) {
+if (text.trim()) {
 
-	taskList.innerHTML = `
+	taskList.insertAdjacentHTML('afterend', `
 	<div class="task">
 		<div class="task__title">
 			${text}
 		</div>
 		<a href="#" class="task__remove">&times;</a>
 	</div>
-	`
-	e.preventDefault();
+	`);
 }
+taskInput.value = '';
 })
 
 document.onclick = e => {
 	if (e.target.classList.contains('task__remove')) {
-		taskList.remove();
+		e.target.closest('.task').remove()
+		// taskList.remove();
 	}
 }

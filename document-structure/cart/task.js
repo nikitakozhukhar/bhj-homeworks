@@ -1,58 +1,16 @@
-const quantityControl = document.querySelectorAll(".product__quantity-control");
+// const quantityControl = document.querySelectorAll(".product__quantity-control");
+// const quantityValue = document.querySelector(".product__quantity-value");
+const productValue = [...document.querySelectorAll('.product__quantity-value')];
+const productAdd = document.querySelectorAll('.product__add');
 
-const quantityValue = document.querySelector(".product__quantity-value");
+const decreaseBtn = document.querySelectorAll('.product__quantity-control_dec');
+const increaseBtn = document.querySelectorAll('.product__quantity-control_inc');
 
-// const productValue = document.querySelector('.product__quantity-value');
 
+// const productTest = [...document.querySelectorAll('.product')];
+// console.log(productTest.find(item => item.dataset.id === '1'))
 
-const product = document.querySelectorAll('.product')
-
-document.onclick = e => {
-  const parent = e.target.closest('.product');
-
-  const imgSrc = e.target.closest('.product__controls').previousElementSibling.src;
-  
-  const productValue = e.target.closest('.product__quantity-value').textContent
-  console.log(productValue)
-  
-
-  let cartProducts = document.querySelector('.cart__products');
-  
-  if (e.target.classList.contains('product__quantity-control_dec')) {
-    decreaseValue(e);
-  }
-
-  if (e.target.classList.contains('product__quantity-control_inc')) {
-    increaseValue(e);
-    // console.log(image)
-  }
-
-    if (e.target.classList.contains('product__add')) {
-      //создаем элемент карточки товара для корзины
-      // createCartProduct(e);
-      const cartProduct = document.createElement('div');
-      
-		  cartProduct.className = 'cart__product';
-      cartProduct.setAttribute('data-id', parent.dataset.id);
-      cartProducts.appendChild(cartProduct);
-
-      //Создаем тег для картинки товара
-      const cartProductImage = document.createElement('img');
-      cartProductImage.src = imgSrc;
-      cartProductImage.className ='cart__product-image';
-      cartProduct.appendChild(cartProductImage);
-
-      //создаем счетчик добавленного товара
-      const cartProductCount = document.createElement('div');
-      cartProductCount.className ='cart__product-count';
-      cartProductCount.textContent = productValue;
-      cartProduct.appendChild(cartProductCount);
-      
-  }
-  
-  
-
-}
+// console.log(productTest.dataset.id === '1')
 
 const decreaseValue = e => {
   e.target.nextElementSibling.textContent--;
@@ -65,72 +23,51 @@ const increaseValue = e => {
   e.target.previousElementSibling.textContent++;
 }
 
-// const createCartProduct = e => {
-//   const parent = e.target.closest('.product');
-//   let cartProducts = document.querySelector('.cart__products');
-//   const cartProduct = document.createElement('div');
-      
-// 		  cartProduct.className = 'cart__product';
-//       cartProduct.setAttribute('data-id', parent.dataset.id);
-//       cartProducts.appendChild(cartProduct);
-// }
+const product = document.querySelectorAll('.product')
 
-
-
-
-// const decreaseValue = id => {
+decreaseBtn.forEach(item => {
+  item.addEventListener('click', e => {
+    decreaseValue(e);
+  });
+})
   
-//   cart[id]--;
-//   renderCart()
-// }
-
-// const increaseValue = id => {
- 
-//   cart[id]++;
-  
-//   renderCart()
-// }
-
-// const renderCart = () => {
-//   console.log(cart)
-// }
-// renderCart()
-/*
-if (e.target.classList.contains('product__quantity-control_dec')) {
-  quantityValue.forEach(value => {
-    if (value.textContent <= 0) {
-      return
-    }
-    value.textContent--;
-    
+increaseBtn.forEach(item => {
+  item.addEventListener('click', e=> {
+    increaseValue(e);
   })
-} 
-if (e.target.classList.contains('product__quantity-control_inc')) {
-  quantityValue.forEach(value => value.textContent++)
-}
-*/
+})
 
+productAdd.forEach(item => {
+  item.addEventListener('click', e => {
+    const parent = e.target.closest('.product');
+    const imgSrc = e.target.closest('.product__controls').previousElementSibling.src;
+    const value = e.target.previousElementSibling.children[1].textContent;
+    
 
+    let cartProducts = document.querySelector('.cart__products');
 
+    const cartProduct = document.createElement('div');
+    cartProduct.className = 'cart__product';
+    cartProduct.setAttribute('data-id', parent.dataset.id);
+    cartProduct.innerHTML = `
+          <img class="cart__product-image" src="${imgSrc}">
+          <div class="cart__product-count">${value}</div>
+    `
+    cartProducts.append(cartProduct)
+    const cartCount = document.querySelector('.cart__product-count');
+    // const carts = document.querySelectorAll('.cart__products');
+    
 
-
-
-
-
-
-// quantityControl.forEach(control => control.addEventListener('click', e => {
-//   let parent = e.target.closest('.product');
-//   console.log(parent.dataset)
-//   if (e.target.classList.contains('product__quantity-control_dec')) {
-//     quantityValue.forEach(value => {
-//       if (value.textContent <= 0) {
-//         return
-//       }
-//       value.textContent--;
-      
-//     })
-//   } 
-//   if (e.target.classList.contains('product__quantity-control_inc')) {
-//     quantityValue.forEach(value => value.textContent++)
-//   }
-// }))
+    const productCartsArr = [...document.querySelectorAll('.cart__product')];
+  
+    
+    const productInCard = productCartsArr.find(item => item.dataset.id === cartProduct.dataset.id);
+    // console.log(productInCard)
+      if(productInCard) {
+        // cartCount.textContent = +cartCount.textContent + (+value);
+      } else {
+        // добавлять новый элемент продукта
+      }
+  })
+ 
+})

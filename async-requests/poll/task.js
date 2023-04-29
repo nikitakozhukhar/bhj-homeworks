@@ -1,4 +1,4 @@
-let xhr = new XMLHttpRequest();
+const xhr = new XMLHttpRequest();
 const title = document.querySelector('.poll__title');
 const answers = document.querySelector('.poll__answers');
 
@@ -7,13 +7,13 @@ xhr.open('GET', 'https://students.netoservices.ru/nestjs-backend/poll', true);
 xhr.responseType = 'json'
 
 xhr.onload = () => {
-  let resposeTitle = xhr.response.data.title;
+  const resposeTitle = xhr.response.data.title;
   title.innerText = resposeTitle;
   
-  let responseAnswers = xhr.response.data.answers;
+  const responseAnswers = xhr.response.data.answers;
 
   for (let i = 0; i < responseAnswers.length; i++ ) {
-    let btnAnswer = document.createElement('button');
+    const btnAnswer = document.createElement('button');
     btnAnswer.className = 'poll__answer';
     btnAnswer.innerText += responseAnswers[i];
     

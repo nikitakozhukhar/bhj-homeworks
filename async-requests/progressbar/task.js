@@ -1,4 +1,5 @@
-// const progress = document.getElementById('progress');
+const progress = document.getElementById('progress');
+const sendBtn = document.getElementById('send');
 progress.value = 0.0;
 
 const xhr = new XMLHttpRequest();
@@ -9,15 +10,19 @@ xhr.open('GET', url, true);
 xhr.responseType = 'json'
 
 xhr.upload.onprogress = function (event) {
-	progress.value = 1;
+	sendBtn.addEventListener('submit', e => {
+		e.preventDefault();
+	})
+	
+	progress.value++;
 	alert('Загружено на сервер ' + event.loaded + ' байт из ' + event.total);
 }
 
-xhr.onload = xhr.onerror = function () {
+xhr.onload = xhr.onerror = function (event) {
 	if (this.status == 200) {
-		console.log("success");
+		console.log('success');
 	} else {
-		console.log("error " + this.status);
+		console.log('error ' + this.status);
 	}
 };
 

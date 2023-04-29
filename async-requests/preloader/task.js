@@ -1,33 +1,36 @@
-let xhr = new XMLHttpRequest();
+const xhr = new XMLHttpRequest();
 
 xhr.open('GET', 'https://students.netoservices.ru/nestjs-backend/slow-get-courses', true);
 
 xhr.responseType = 'json'
 
 xhr.onload = () => {
-	let valuteObj = xhr.response.response.Valute;
-	let arrOfValutes = Object.entries(valuteObj)
-	let loader = document.querySelector('.loader')
+	const valuteObj = xhr.response.response.Valute;
+	const arrOfValutes = Object.entries(valuteObj)
+	const loader = document.querySelector('.loader')
 
-	let items = document.querySelector('#items');
+	const items = document.querySelector('#items');
 
-	if (xhr.readyState === 4) {
+	// if (xhr.readyState === 4) {
+		if (xhr.status === 200) {
 		loader.classList.remove('loader_active');
+	} else {
+		'Произошла ошибка'
 	}
 
 	for (let i = 0; i < arrOfValutes.length; i++) {
-		let item = document.createElement('div');
+		const item = document.createElement('div');
 		item.className = 'item';
 
-		let itemCode = document.createElement('div');
+		const itemCode = document.createElement('div');
 		itemCode.className = 'item__code';
 		itemCode.innerText = arrOfValutes[i][1].CharCode;
 
-		let itemCValue = document.createElement('div');
+		const itemCValue = document.createElement('div');
 		itemCValue.className = 'item__value';
 		itemCValue.innerText = arrOfValutes[i][1].Value;
 
-		let itemCCurrency = document.createElement('div');
+		const itemCCurrency = document.createElement('div');
 		itemCCurrency.className = 'item__currency';
 		itemCCurrency.innerText = arrOfValutes[i][1].Name;
 
