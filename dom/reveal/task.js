@@ -1,16 +1,15 @@
-const revealActive = document.querySelector('.reveal');
-
-const itemCoordsTop = revealActive.getBoundingClientRect().top;
-const itemCoordsBot = revealActive.getBoundingClientRect().bottom;
+const reveal = document.querySelector('.reveal');
 
 function isVisible() {
 
-  if (itemCoordsTop < window.innerHeight) {
-    revealActive.classList.add('reveal_active')
-  }
-
-  if (itemCoordsTop > window.innerHeight || itemCoordsBot <= 0) {
-    revealActive.classList.remove('reveal_active')
+  const { innerHeight } = window;
+  const { top } = reveal.getBoundingClientRect();
+  
+  if (top < innerHeight && top > 0) {
+  reveal.classList.add("reveal_active");
+  } else {
+  reveal.classList.remove("reveal_active");
   }
 }
 window.addEventListener('scroll', isVisible)
+
