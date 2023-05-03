@@ -13,7 +13,7 @@ xhr.upload.onprogress = function (event) {
 	sendBtn.addEventListener('submit', e => {
 		e.preventDefault();
 	})
-	
+	console.log(xhr.upload.onload)
 	progress.value++;
 	alert('Загружено на сервер ' + event.loaded + ' байт из ' + event.total);
 }

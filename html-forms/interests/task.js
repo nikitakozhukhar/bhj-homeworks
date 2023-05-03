@@ -9,6 +9,9 @@ const interestCheck = document.querySelectorAll('.interest__check')
 
 interestCheck.forEach(item => item.addEventListener('click', e => {
 	let isChecked;
+	let link = e.target.closest('.interest');
+	
+	console.log(link);
 	if (e.target.checked === true) {
 		isChecked = true
 	} else {
