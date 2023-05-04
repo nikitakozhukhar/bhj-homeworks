@@ -12,6 +12,4 @@ interestCheck.forEach(item => item.addEventListener('click', e => {
 	}
 
 	children.forEach(item => item.checked = isChecked)
-
-	
 }))

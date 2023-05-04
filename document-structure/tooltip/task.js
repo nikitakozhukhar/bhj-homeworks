@@ -13,7 +13,6 @@ hasTooltip.forEach(item => {
 			left: ${left}px; 
 			top: ${top + 20}px;
 		`
-
 	item.append(createBlock);
 
 	item.onclick = e => {
@@ -26,7 +25,7 @@ hasTooltip.forEach(item => {
 		if (isActive) {
 			return tooltip.remove('tooltip_active');
 		}
-		
+
 		document.querySelector('.tooltip_active')?.classList.remove('tooltip_active');
 
 		tooltip.add('tooltip_active');
