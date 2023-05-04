@@ -30,9 +30,9 @@ decreaseBtn.forEach(item => {
     decreaseValue(e);
   });
 })
-  
+
 increaseBtn.forEach(item => {
-  item.addEventListener('click', e=> {
+  item.addEventListener('click', e => {
     increaseValue(e);
   })
 })
@@ -42,32 +42,32 @@ productAdd.forEach(item => {
     const parent = e.target.closest('.product');
     const imgSrc = e.target.closest('.product__controls').previousElementSibling.src;
     const value = e.target.previousElementSibling.children[1].textContent;
-    
+
 
     let cartProducts = document.querySelector('.cart__products');
 
-    const cartProduct = document.createElement('div');
-    cartProduct.className = 'cart__product';
-    cartProduct.setAttribute('data-id', parent.dataset.id);
-    cartProduct.innerHTML = `
+    const currentProductId = e.target.closest('.product').dataset.id;
+    // console.log(cartCount)
+    // const carts = document.querySelectorAll('.cart__products');
+
+    const productCartsArr = [...document.querySelectorAll('.cart__product')];
+
+    const productInCard = productCartsArr.find(item => item.dataset.id === currentProductId);
+
+    if (productInCard) {
+      let cart = document.querySelector(`.cart__product[data-id="${currentProductId}"]`);
+      cart.children[1].textContent = +cart.textContent + (+value);
+    } else {
+      const cartProduct = document.createElement('div');
+      cartProduct.className = 'cart__product';
+      cartProduct.setAttribute('data-id', parent.dataset.id);
+      cartProduct.innerHTML = `
           <img class="cart__product-image" src="${imgSrc}">
           <div class="cart__product-count">${value}</div>
     `
-    cartProducts.append(cartProduct)
-    const cartCount = document.querySelector('.cart__product-count');
-    // const carts = document.querySelectorAll('.cart__products');
-    
 
-    const productCartsArr = [...document.querySelectorAll('.cart__product')];
-  
-    
-    const productInCard = productCartsArr.find(item => item.dataset.id === cartProduct.dataset.id);
-    // console.log(productInCard)
-      if(productInCard) {
-        // cartCount.textContent = +cartCount.textContent + (+value);
-      } else {
-        // добавлять новый элемент продукта
-      }
+      cartProducts.append(cartProduct);
+    }
   })
- 
+
 })

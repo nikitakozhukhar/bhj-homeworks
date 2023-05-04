@@ -1,27 +1,17 @@
-const interestCheck = document.querySelectorAll('.interest__check')
-
-// const interest = document.querySelectorAll('.interest');
-
-// const childrenInterest = document.querySelectorAll('.interests>.interest');
-
-// const childs = document.querySelectorAll('.interests_active .interest')
-
+const interestCheck = document.querySelectorAll('.interest__check');
 
 interestCheck.forEach(item => item.addEventListener('click', e => {
 	let isChecked;
-	let link = e.target.closest('.interest');
-	
-	console.log(link);
-	if (e.target.checked === true) {
+	let currentElement = e.target.closest('.interest');
+	let children = currentElement.querySelectorAll('.interest__check');
+
+	if (e.target.checked) {
 		isChecked = true
 	} else {
 		isChecked = false
 	}
 
-	if (isChecked) {
-		interestCheck.forEach(item => item.checked = isChecked)
-		
-	} else {
-		interestCheck.forEach(item => console.log(item.checked = isChecked))
-	}
+	children.forEach(item => item.checked = isChecked)
+
+	
 }))
