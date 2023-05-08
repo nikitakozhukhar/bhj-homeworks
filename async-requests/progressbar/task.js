@@ -9,12 +9,13 @@ xhr.open('GET', url, true);
 
 xhr.responseType = 'json'
 
-xhr.upload.onprogress = function (event) {
+xhr.upload = function (event) {
 	sendBtn.addEventListener('submit', e => {
 		e.preventDefault();
 	})
-	console.log(xhr.upload.onload)
+	
 	progress.value++;
+	console.log(file)
 	alert('Загружено на сервер ' + event.loaded + ' байт из ' + event.total);
 }
 
